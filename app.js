@@ -50,10 +50,24 @@ function calculateResults(e){
     const term = document.getElementById('term');
     const interest = document.getElementById('interest');
 
-    
-    UICtrl.clarFields();
+    let html='';
+
+    for(let i = 1; i <= term.value;i++){
+        html += `<tr>
+                    <th scope="row">${i}</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                </tr>`;
+    };
+
+    // Insert data in UI
+
+    document.querySelector('#item-list').innerHTML = html;
+
     e.preventDefault();
 }
+
+document.getElementById('forn-group').addEventListener('submit',UICtrl.clarFields());
 
 // let re;
 // re = /hello/i;  // i = case insensitive
