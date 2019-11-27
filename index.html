@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Duração (meses)</span>
+                                    <span class="input-group-text">Número de participantes</span>
                                 </div>
                                 <input type="text" class="form-control" id="term">
                                 <div class="invalid-feedback">Valor deve ser um número</div>
@@ -41,7 +41,21 @@
                                 <input type="text" class="form-control" id="interest">
                                 <div class="invalid-feedback">Valor deve ser um número</div>
                             </div>
-                        </div>                        
+                        </div> 
+                        <div class="dropdown">
+                          <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Taxa de juros
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">0</a>
+                            <a class="dropdown-item" href="#">1,0</a>
+                            <a class="dropdown-item" href="#">2,0</a>
+                            <a class="dropdown-item" href="#">2,5</a>
+                            <a class="dropdown-item" href="#">3,0</a>
+                            <a class="dropdown-item" href="#">3,5</a>
+                            <a class="dropdown-item" href="#">4,0</a>
+                          </div>
+                        </div>                       
                         <div class="form-group">
                             <div class="forn-group">
                                 <input id="consorcio-form" type="submit" value="Calcular" class="btn btn-info btn-block">

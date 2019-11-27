@@ -2,12 +2,16 @@ document.getElementById('amount').addEventListener('blur',validateAmount);
 document.getElementById('term').addEventListener('blur',validateTerm);
 document.getElementById('interest').addEventListener('blur',validateInterest);
 
+$(document).ready(function(){
+    $(".dropdown-toggle").dropdown();
+  });
 
 // Listen for submit
 document.getElementById('consorcio-form').addEventListener('submit',calculateResults);
 
 
 // functions to validate inputs
+
 
 function validateAmount(){
     const amount = document.getElementById('amount');
@@ -49,14 +53,17 @@ function calculateResults(e){
     const amount = document.getElementById('amount');
     const term = document.getElementById('term');
     const interest = document.getElementById('interest');
+    const par = document.getElementById('dropdownMenuButton');
 
     let html='';
+    let total = amount.value;
 
     for(let i = 1; i <= term.value;i++){
+        total = total * (1 + (interest.value/100));
         html += `<tr>
                     <th scope="row">${i}</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    <td>R$ ${total.toLocaleString('pt-BR',{ minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td>R$ ${(total/term.value).toLocaleString('pt-BR',{ minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                 </tr>`;
     };
 
