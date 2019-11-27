@@ -1,10 +1,8 @@
 document.getElementById('amount').addEventListener('blur',validateAmount);
 document.getElementById('term').addEventListener('blur',validateTerm);
-document.getElementById('interest').addEventListener('blur',validateInterest);
 
-$(document).ready(function(){
-    $(".dropdown-toggle").dropdown();
-  });
+document.getElementById("list").addEventListener("click",pickInterest);
+
 
 // Listen for submit
 document.getElementById('consorcio-form').addEventListener('submit',calculateResults);
@@ -33,32 +31,30 @@ function validateTerm(){
     };
 };
 
-function validateInterest(){
-    const interest = document.getElementById('interest');
-    const re = /\d+/;
-    if(!re.test(interest.value)){
-        interest.classList.add('is-invalid');
-    } else {
-        interest.classList.remove('is-invalid');
-    };
+function pickInterest(){
+    //console.log(document.getElementById("list").value);
 };
 
 
 // function to calculate results
 
 function calculateResults(e){
-    console.log('Calculando com a Caloi')
+    //console.log('Calculando com a Caloi')
 
     // Grab Variables
     const amount = document.getElementById('amount');
     const term = document.getElementById('term');
-    const interest = document.getElementById('interest');
-    const par = document.getElementById('dropdownMenuButton');
+    const interest = document.getElementById("list");
 
-    let html='';
-    let total = amount.value;
+    let total = amount.value*1.00;
+    let html=`<tr>
+                <th scope="row">1</th>
+                <td>R$ ${total.toLocaleString('pt-BR',{ minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                <td>R$ ${(total/term.value).toLocaleString('pt-BR',{ minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+            </tr>`;
+    
 
-    for(let i = 1; i <= term.value;i++){
+    for(let i = 2; i <= term.value;i++){
         total = total * (1 + (interest.value/100));
         html += `<tr>
                     <th scope="row">${i}</th>
@@ -74,7 +70,11 @@ function calculateResults(e){
     e.preventDefault();
 }
 
-document.getElementById('forn-group').addEventListener('submit',UICtrl.clarFields());
+document.getElementById('limpar').addEventListener('click',limparTela);
+
+function limparTela(){
+    location.reload();
+};
 
 // let re;
 // re = /hello/i;  // i = case insensitive
